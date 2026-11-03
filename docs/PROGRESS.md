@@ -97,3 +97,6 @@ src/
 - Character detail pages not implemented (only cards)
 - No actual backend - all data is static
 - Some CSS animations may be complex for older browsers
+
+## Fixes Applied
+- **Missing Google Fonts import**: The `Cinzel` and `Fira Code` fonts used in CSS variables were not loaded via Google Fonts, causing character/spell names to be invisible in the browser (FOIT - Flash of Invisible Text). Fixed by adding `<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />` to index.html.
