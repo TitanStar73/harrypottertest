@@ -1,0 +1,345 @@
+.page {
+  width: 100%;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  padding: var(--space-4xl) var(--container-padding);
+  text-align: center;
+  background: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border-medium);
+  overflow: hidden;
+}
+
+.heroBackground {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(52, 152, 219, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(255, 215, 0, 0.08) 0%, transparent 50%);
+}
+
+.heroContent {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.heroTitle {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-md);
+  line-height: var(--line-height-tight);
+}
+
+.highlight {
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroSubtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-xl);
+  line-height: var(--line-height-relaxed);
+}
+
+.heroStats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.statIcon {
+  font-size: var(--font-size-2xl);
+}
+
+.statValue {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--stat-color);
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Timeline Section */
+.timelineSection {
+  padding: var(--space-3xl) var(--container-padding);
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.sectionTitle {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-sm);
+}
+
+.sectionDescription {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Periods Section */
+.periodsSection {
+  padding: var(--space-4xl) var(--container-padding);
+  background: var(--color-bg-tertiary);
+}
+
+.periodsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .periodsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .periodsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.periodCard {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  text-align: center;
+  transition: all var(--transition-normal);
+  opacity: 0;
+  animation: slideUp var(--transition-slow) ease-out both;
+}
+
+.periodCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--period-color);
+}
+
+.periodCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--period-color);
+}
+
+.periodIcon {
+  font-size: var(--font-size-3xl);
+  display: block;
+  margin-bottom: var(--space-md);
+}
+
+.periodLabel {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-xs);
+}
+
+.periodYears {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--period-color);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-xs);
+}
+
+.periodEvents {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Books Section */
+.booksSection {
+  padding: var(--space-4xl) var(--container-padding);
+}
+
+.booksGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-lg);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.bookCard {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  text-align: center;
+  transition: all var(--transition-normal);
+  opacity: 0;
+  animation: slideUp var(--transition-slow) ease-out both;
+}
+
+.bookCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--book-color);
+}
+
+.bookCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--book-color);
+}
+
+.bookTitle {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-sm);
+  font-style: italic;
+}
+
+.bookYear {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--book-color);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-xs);
+}
+
+.bookEvents {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+/* Page Navigation */
+.pageNav {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-xl) var(--container-padding);
+  border-top: 1px solid var(--color-border-subtle);
+  background: var(--color-bg-card);
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-gold-gradient);
+  color: var(--color-text-inverse);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.navLink:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg), var(--shadow-gold);
+  color: var(--color-text-inverse);
+  text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    padding: var(--space-3xl) var(--container-padding);
+  }
+
+  .heroTitle {
+    font-size: var(--font-size-3xl);
+  }
+
+  .heroStats {
+    gap: var(--space-md);
+  }
+
+  .statValue {
+    font-size: var(--font-size-2xl);
+  }
+
+  .timelineSection {
+    padding: var(--space-2xl) var(--container-padding);
+  }
+
+  .sectionTitle {
+    font-size: var(--font-size-2xl);
+  }
+
+  .periodsSection,
+  .booksSection {
+    padding: var(--space-3xl) var(--container-padding);
+  }
+}
+
+@media (max-width: 480px) {
+  .heroStats {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .periodCard,
+  .bookCard,
+  .statCard,
+  .navLink {
+    animation: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+
+  .periodCard:hover,
+  .bookCard:hover,
+  .navLink:hover {
+    transform: none;
+  }
+}

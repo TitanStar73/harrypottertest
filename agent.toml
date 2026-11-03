@@ -1,0 +1,64 @@
+
+# ---- model ----
+model = "nvidia/nemotron-3-ultra-550b-a55b:free"
+fallback_models = ['google/gemma-4-31b-it:free']
+server_url = "https://ai.hackclub.com/proxy/v1"
+api_key_env = "OPENROUTER_API_KEY"
+reasoning_effort = 'max'
+temperature = 1.0
+top_p = 0.95
+api_retries = 12
+
+# ---- workspace & file permissions ----
+workspace = "."
+writable_paths = ['.']
+readable_paths = ['.']
+allow_read_outside_workspace = false
+protected_paths = [".git", ".git/**", ".agent/**", "agent.toml", ".env", "**/.env"]
+edit_approval = "auto"
+
+# ---- commands ----
+command_approval = "auto"
+auto_approve_commands = [
+  '^(ls|pwd|cat|head|tail|wc|echo|which|find|tree|grep|rg|diff|file|stat|du)\b',
+  '^git\s+(status|diff|log|show|branch)\b',
+]
+blocked_commands = [
+  '\brm\s+(-[a-zA-Z]*\s+)*(-[a-zA-Z]*r[a-zA-Z]*|--recursive)\s+(-[a-zA-Z]*\s+)*(/|~|\$HOME)(\s|$|/\*)',
+  '\bmkfs(\.\w+)?\b',
+  '\bdd\s+.*\bof=/dev/',
+  '\b(shutdown|reboot|halt|poweroff)\b',
+  '\bgit\s+push\b.*--force\b',
+  '\bchmod\s+(-R\s+)?[0-7]*777\s+/(\s|$)',
+]
+command_timeout = 240.0
+max_command_timeout = 2400.0
+
+# ---- context ---- 
+instruction_files = ["AGENTS.md", ".agent/INSTRUCTIONS.md"]
+context_files = ["spec/SPEC.md", "docs/PROGRESS.md"]
+reference_docs = []
+max_context_file_chars = 30000
+context_window = 200000
+compact_threshold = 0.8
+keep_recent_tool_results = 8
+max_tool_output_chars = 25000
+system_prompt_extra = ""
+system_prompt_override = ""
+
+# ---- memory, sessions, limits ----
+memory_dir = ".agent/memory"
+memory_inline_chars = 6000
+sessions_dir = ".agent/sessions"
+outputs_dir = ".agent/outputs"
+max_steps = 750
+enable_web = true
+enable_subagents = true
+disabled_tools = []
+show_reasoning = "full"
+agent_name = "MyAgent"
+
+# must stay last: it is a real table, not a grouping
+[command_env]
+NODE_ENV = "development"
+  

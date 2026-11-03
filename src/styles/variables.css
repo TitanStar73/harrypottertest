@@ -1,0 +1,178 @@
+/* CSS Custom Properties - Harry Potter Theme */
+:root {
+  /* Colors - Dark Magical Theme */
+  --color-bg-primary: #0a0a12;
+  --color-bg-secondary: #12121f;
+  --color-bg-tertiary: #1a1a2e;
+  --color-bg-card: #161623;
+  --color-bg-hover: #1f1f3a;
+  --color-bg-input: #1e1e2e;
+
+  /* Gold Accent Colors */
+  --color-gold-primary: #ffd700;
+  --color-gold-secondary: #ffc107;
+  --color-gold-dark: #b8860b;
+  --color-gold-light: #fff3b0;
+  --color-gold-gradient: linear-gradient(135deg, #ffd700 0%, #b8860b 100%);
+
+  /* House Colors */
+  --color-gryffindor: #740001;
+  --color-gryffindor-light: #ae0001;
+  --color-slytherin: #0d6217;
+  --color-slytherin-light: #1a7a2a;
+  --color-ravenclaw: #0e1a40;
+  --color-ravenclaw-light: #222f5b;
+  --color-hufflepuff: #ecb939;
+  --color-hufflepuff-light: #f0c75e;
+
+  /* House Gradients */
+  --color-gryffindor-gradient: linear-gradient(135deg, #740001 0%, #ae0001 50%, #ffd700 100%);
+  --color-slytherin-gradient: linear-gradient(135deg, #0d6217 0%, #1a7a2a 50%, #2ecc71 100%);
+  --color-ravenclaw-gradient: linear-gradient(135deg, #0e1a40 0%, #222f5b 50%, #3498db 100%);
+  --color-hufflepuff-gradient: linear-gradient(135deg, #ecb939 0%, #f0c75e 50%, #fff3b0 100%);
+
+  /* House Shadows */
+  --shadow-gryffindor: 0 0 20px rgba(174, 0, 1, 0.4), 0 0 40px rgba(255, 215, 0, 0.2);
+  --shadow-slytherin: 0 0 20px rgba(26, 122, 42, 0.4), 0 0 40px rgba(46, 204, 113, 0.2);
+  --shadow-ravenclaw: 0 0 20px rgba(34, 47, 91, 0.4), 0 0 40px rgba(52, 152, 219, 0.2);
+  --shadow-hufflepuff: 0 0 20px rgba(240, 199, 94, 0.4), 0 0 40px rgba(255, 243, 176, 0.2);
+
+  /* Text Colors */
+  --color-text-primary: #f5f5f0;
+  --color-text-secondary: #c9c9c0;
+  --color-text-muted: #8a8a7e;
+  --color-text-inverse: #0a0a12;
+
+  /* Border Colors */
+  --color-border-subtle: #2a2a40;
+  --color-border-medium: #3a3a55;
+  --color-border-gold: #ffd700;
+
+  /* Status Colors */
+  --color-success: #2ecc71;
+  --color-warning: #f39c12;
+  --color-danger: #e74c3c;
+  --color-info: #3498db;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-gold: 0 0 20px rgba(255, 215, 0, 0.3);
+  --shadow-gold-lg: 0 0 40px rgba(255, 215, 0, 0.4);
+
+  /* Typography */
+  --font-primary: 'Georgia', 'Times New Roman', serif;
+  --font-secondary: 'Cinzel', 'Georgia', serif;
+  --font-mono: 'Fira Code', 'Consolas', monospace;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+  --font-size-5xl: 3.5rem;
+  --font-size-6xl: 5rem;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.1;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+  --transition-bounce: 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Z-Index */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-toast: 600;
+
+  /* Container */
+  --container-max: 1200px;
+  --container-padding: 1.5rem;
+
+  /* Header */
+  --header-height: 72px;
+  --header-height-mobile: 64px;
+}
+
+/* Light theme (for accessibility) */
+@media (prefers-color-scheme: light) {
+  :root:not(.dark) {
+    --color-bg-primary: #faf9f5;
+    --color-bg-secondary: #f0efe8;
+    --color-bg-tertiary: #e8e6dd;
+    --color-bg-card: #ffffff;
+    --color-bg-hover: #e8e6dd;
+    --color-bg-input: #f5f3ed;
+
+    --color-text-primary: #1a1a2e;
+    --color-text-secondary: #3a3a4e;
+    --color-text-muted: #6a6a7e;
+
+    --color-border-subtle: #d0cec8;
+    --color-border-medium: #b8b5ad;
+
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-normal: 0ms;
+    --transition-slow: 0ms;
+    --transition-bounce: 0ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  :root {
+    --color-border-subtle: currentColor;
+    --color-border-medium: currentColor;
+    --color-text-muted: var(--color-text-secondary);
+  }
+}

@@ -1,0 +1,182 @@
+/* Main cursor */
+.cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.1s ease, transform 0.05s ease;
+  will-change: transform, opacity;
+}
+
+.cursorCore {
+  width: 16px;
+  height: 16px;
+  background: var(--color-gold-gradient);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 8px var(--color-gold-primary),
+    0 0 16px var(--color-gold-primary),
+    inset 0 0 8px rgba(255, 255, 255, 0.3);
+  animation: cursorPulse 2s ease-in-out infinite;
+}
+
+.cursorGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: cursorGlowPulse 1.5s ease-in-out infinite;
+}
+
+.cursorSparkle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: var(--color-gold-gradient);
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 68% 57%,
+    79% 91%, 50% 70%, 21% 91%, 32% 57%,
+    2% 35%, 39% 35%
+  );
+  animation: cursorSparkleSpin 3s linear infinite;
+}
+
+@keyframes cursorPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 8px var(--color-gold-primary), 0 0 16px var(--color-gold-primary); }
+  50% { transform: scale(1.2); box-shadow: 0 0 16px var(--color-gold-primary), 0 0 32px var(--color-gold-primary); }
+}
+
+@keyframes cursorGlowPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+  50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.8; }
+}
+
+@keyframes cursorSparkleSpin {
+  from { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+  to { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
+}
+
+/* Trail particles */
+.trailContainer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+.trailParticle {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--color-gold-gradient);
+  box-shadow: 0 0 6px var(--color-gold-primary);
+  animation: trailFade 0.5s ease-out forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes trailFade {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Click burst */
+.burstContainer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9997;
+}
+
+.burst {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+}
+
+.burstParticle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--size);
+  height: var(--size);
+  background: var(--color);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--color);
+  animation: burstExpand 0.8s ease-out forwards;
+  animation-delay: var(--delay);
+  will-change: transform, opacity;
+}
+
+@keyframes burstExpand {
+  0% {
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateX(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateX(var(--distance)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Hover effects for interactive elements */
+.hoverMagical {
+  position: relative;
+}
+
+.hoverMagical::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: var(--color-gold-gradient);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  z-index: -1;
+  filter: blur(8px);
+}
+
+.hoverMagical:hover::before {
+  opacity: 0.6;
+  animation: borderGlow 2s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+  0%, 100% { opacity: 0.4; filter: blur(8px); }
+  50% { opacity: 0.8; filter: blur(12px); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .cursor,
+  .cursorCore,
+  .cursorGlow,
+  .cursorSparkle,
+  .trailParticle,
+  .burstParticle {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .cursor {
+    opacity: 0.5 !important;
+  }
+  
+  .trailContainer,
+  .burstContainer {
+    display: none !important;
+  }
+}

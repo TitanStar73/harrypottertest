@@ -1,0 +1,191 @@
+.container {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: 
+    radial-gradient(ellipse 80% 50% at 20% 20%, rgba(255, 215, 0, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(155, 89, 182, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 30% at 50% 50%, rgba(255, 215, 0, 0.02) 0%, transparent 60%);
+}
+
+/* Intensity variants */
+.low {
+  opacity: 0.5;
+}
+
+.medium {
+  opacity: 1;
+}
+
+.high {
+  opacity: 1.5;
+}
+
+/* Glow orbs - large ambient magical glows */
+.glowOrbs {
+  position: absolute;
+  inset: 0;
+}
+
+.glowOrb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: orbFloat 20s ease-in-out infinite;
+}
+
+.orb1 {
+  width: 400px;
+  height: 400px;
+  top: -100px;
+  left: -100px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
+  animation-delay: 0s;
+}
+
+.orb2 {
+  width: 300px;
+  height: 300px;
+  bottom: -50px;
+  right: -50px;
+  background: radial-gradient(circle, rgba(155, 89, 182, 0.12) 0%, transparent 70%);
+  animation-delay: -7s;
+}
+
+.orb3 {
+  width: 250px;
+  height: 250px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255, 193, 7, 0.1) 0%, transparent 70%);
+  animation-delay: -14s;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -20px) scale(1.1); }
+  50% { transform: translate(-20px, 30px) scale(0.95); }
+  75% { transform: translate(-30px, -10px) scale(1.05); }
+}
+
+/* Particles layer */
+.particlesLayer {
+  position: absolute;
+  inset: 0;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: hsl(var(--particle-hue), 100%, 60%);
+  box-shadow: 
+    0 0 4px hsl(var(--particle-hue), 100%, 60%),
+    0 0 8px hsl(var(--particle-hue), 100%, 40%);
+  animation: particleRise 15s linear infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes particleRise {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) translateX(var(--tx, 0)) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Sparkles layer */
+.sparklesLayer {
+  position: absolute;
+  inset: 0;
+}
+
+.sparkle {
+  position: absolute;
+  background: var(--color-gold-gradient);
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 68% 57%,
+    79% 91%, 50% 70%, 21% 91%, 32% 57%,
+    2% 35%, 39% 35%
+  );
+  animation: sparkleTwinkle var(--sparkle-duration) ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes sparkleTwinkle {
+  0%, 100% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    transform: scale(1) rotate(45deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2) rotate(90deg);
+    opacity: 0.8;
+  }
+  80% {
+    transform: scale(1) rotate(135deg);
+    opacity: 1;
+  }
+}
+
+/* Wand trail layer */
+.wandTrailLayer {
+  position: absolute;
+  inset: 0;
+}
+
+.wandTrail {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  border-radius: 50%;
+  background: var(--color-gold-gradient);
+  filter: blur(8px);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.1s ease, transform 0.05s ease;
+  z-index: 9999;
+}
+
+.wandTrail.active {
+  opacity: 0.8;
+}
+
+/* Content wrapper */
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .container {
+    animation: none !important;
+  }
+  
+  .glowOrb,
+  .particle,
+  .sparkle {
+    animation: none !important;
+    opacity: 0.1 !important;
+  }
+  
+  .wandTrail {
+    display: none !important;
+  }
+}
