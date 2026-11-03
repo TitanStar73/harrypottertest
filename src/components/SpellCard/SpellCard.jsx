@@ -29,13 +29,15 @@ const categoryIcons = {
   'unforgivable': '☠️'
 }
 
-export const SpellCard = ({ spell, compact = false }) => {
+export const SpellCard = ({ spell, compact = false, variant }) => {
+  // Support both `compact` (boolean) and `variant` ('compact' | 'default') props for backward compatibility
+  const isCompact = compact === true || variant === 'compact'
   const categoryKey = spell.category.toLowerCase()
   const categoryColor = categoryColors[categoryKey] || 'var(--color-gold-primary)'
   const difficultyColor = difficultyColors[spell.difficulty.toLowerCase()] || 'var(--color-text-muted)'
   const categoryIcon = categoryIcons[categoryKey] || '✨'
 
-  if (compact) {
+  if (isCompact) {
     return (
       <article className={`${styles.card} ${styles.compact} hover-magical`}>
         <div className={styles.compactContent}>
